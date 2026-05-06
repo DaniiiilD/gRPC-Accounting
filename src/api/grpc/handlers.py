@@ -24,8 +24,8 @@ class GrpcTariffService(tariff_pb2_grpc.TariffServiceServicer):
                 total = tariff.price_per_day * days
                 
                 return tariff_pb2.GetDailyPriceResponse(
-                    price_per_day=tariff.price_per_day,
-                    total_price= total
+                    price_per_day=int(tariff.price_per_day),
+                    total_price= int(total)
                 )
         except Exception as e:
             context.set_code(grpc.StatusCode.INTERNAL)
